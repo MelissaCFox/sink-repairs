@@ -20,3 +20,11 @@ mainContainer.addEventListener(
         render()
     }
 )
+
+
+// mainContainer.addEventListener("click", click => {
+//     if (click.target.id.startsWith("request--")) {
+//         const [,requestId] = click.target.id.split("--")
+//         deleteRequest(parseInt(requestId))
+//     }
+// })
