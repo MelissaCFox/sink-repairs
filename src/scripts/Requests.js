@@ -75,6 +75,8 @@ mainContainer.addEventListener(
                 completion object as a parameter.
              */
                 saveCompletion(completedService)
+                deleteRequest(parseInt(completedService.requestId))
+
         }
     }
 )

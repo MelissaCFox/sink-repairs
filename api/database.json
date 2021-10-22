@@ -1,31 +1,6 @@
 {
   "plumbers": [],
-  "completions": [
-    {
-      "requestId": "2",
-      "plumberId": "2",
-      "date_created": "10/22/2021",
-      "id": 1
-    },
-    {
-      "requestId": "1",
-      "plumberId": "1",
-      "date_created": "10/22/2021",
-      "id": 2
-    },
-    {
-      "requestId": "1",
-      "plumberId": "2",
-      "date_created": "10/22/2021",
-      "id": 3
-    },
-    {
-      "requestId": "2",
-      "plumberId": "2",
-      "date_created": "10/22/2021",
-      "id": 4
-    }
-  ],
+  "completions": [],
   "requests": [
     {
       "description": "constant dripping from faucet",
@@ -33,13 +8,6 @@
       "budget": "500",
       "neededBy": "2021-10-31",
       "id": 1
-    },
-    {
-      "description": "condensation around base of toilet",
-      "address": "grandma's house",
-      "budget": "75.00",
-      "neededBy": "2021-11-05",
-      "id": 2
     }
   ]
 }
