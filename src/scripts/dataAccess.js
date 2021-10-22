@@ -31,6 +31,7 @@ export const getRequests = () => {
     return applicationState.requests.map(request => ({...request}))
 }
 
+
 export const getPlumbers = () => {
     return applicationState.plumbers.map
     (plumber => ({...plumber}))
@@ -93,3 +94,6 @@ export const fetchCompletions = () => {
     )
 }
 
+export const getCompletions = () => {
+    return applicationState.completions.map(completion => ({...completion}))
+}

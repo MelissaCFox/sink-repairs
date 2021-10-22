@@ -1,10 +1,53 @@
-import { getRequests, getPlumbers, deleteRequest, saveCompletion} from "./dataAccess.js"
+import { getRequests, getPlumbers, deleteRequest, saveCompletion, getCompletions} from "./dataAccess.js"
 
 const plumbers = getPlumbers()
 
 const requestItemListBuilder = (request) => {
+    
+    //====My attempt to make the complete select element disappear after using...
+    // const completions = getCompletions()
+    // let itemHTML = `<div><li>Request #${request.id}: ${request.description}`
+    
+    // //if the requestID exists in compeletions => continue, else ===
+    // for (const completion of completions) {
+    //     if (!completion.requestId === request.id) {
+    //         itemHTML += `<button class="request__delete"
+    //                      id="request--${request.id}">
+    //                     Delete
+    //                 </button>
+    //             </li>`
+    //     } else {
+    //         itemHTML += `<select class="plumbers" id="plumbers">
+    //                     <option value="">Choose</option>
+    //                     ${
+    //                         plumbers.map(
+    //                             plumber => {
+    //                                 return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+    //                                 }
+    //                             ).join("")
+    //                     }
+    //                 </select>
+        
+    //                 </li>
+    //                 <button class="request__delete"
+    //                     id="request--${request.id}">
+    //                     Delete
+    //                  </button>
+    //             </div>`
+    //     }
+    // }
+    // itemHTML += `  <button class="request__delete"
+    //                 id="request--${request.id}">
+    //                 Delete
+    //             </button>
+    //             </li>`
+    // return itemHTML
+
+    //====Original setup for complete selector and delete button
     return `<li>
         Request #${request.id}: ${request.description}
+       
+       
         <select class="plumbers" id="plumbers">
             <option value="">Choose</option>
         ${
@@ -15,6 +58,8 @@ const requestItemListBuilder = (request) => {
         ).join("")
         }
         </select>
+        
+    
         <button class="request__delete"
                 id="request--${request.id}">
             Delete
@@ -26,13 +71,6 @@ const requestItemListBuilder = (request) => {
 export const Requests = () => {
     const requests = getRequests()
 
-    // let html = `
-    //     <ul>
-    //         ${
-    //             requests.map(requestItemBuilder())
-    //         }
-    //     </ul>
-    // `
     let html = "<ul>"
     const listItems = requests.map(requestItemListBuilder)
     html += listItems.join("")
