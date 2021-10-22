@@ -1,6 +1,13 @@
 {
   "plumbers": [],
-  "completions": [],
+  "completions": [
+    {
+      "requestId": "2",
+      "plumberId": "1",
+      "date_created": "10/22/2021",
+      "id": 1
+    }
+  ],
   "requests": [
     {
       "description": "constant dripping from faucet",
@@ -8,6 +15,13 @@
       "budget": "500",
       "neededBy": "2021-10-31",
       "id": 1
+    },
+    {
+      "description": "test",
+      "address": "test",
+      "budget": "50",
+      "neededBy": "2021-11-03",
+      "id": 2
     }
   ]
 }

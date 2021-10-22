@@ -75,7 +75,7 @@ mainContainer.addEventListener(
                 completion object as a parameter.
              */
                 saveCompletion(completedService)
-                deleteRequest(parseInt(completedService.requestId))
+                // deleteRequest(parseInt(completedService.requestId)) Can't completely delete because the completions api references the requests api for that info...
 
         }
     }
