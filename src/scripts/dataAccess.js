@@ -100,7 +100,16 @@ export const saveCompletion = (completedService) => {
     .then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
     })    
-}    
+} 
+
+export const deleteCompletion = (id) => {
+    return fetch(`${API}/completions/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
 
 
 export const updateRequest = () => {

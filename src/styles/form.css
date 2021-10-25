@@ -24,8 +24,8 @@
     flex-wrap: nowrap;
     padding: 5px;
 }
-.service-item:nth-child(even) {background: #CCC}
-.service-item:nth-child(odd) {background: #FFF}
+.service-item:nth-child(odd) {background: #CCC}
+.service-item:nth-child(even) {background: #FFF}
 
 .service-info {
     flex: 9;

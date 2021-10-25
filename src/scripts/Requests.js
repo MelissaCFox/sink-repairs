@@ -53,8 +53,6 @@ mainContainer.addEventListener(
     (event) => {
         if (event.target.id === "plumbers") {
             const [requestId, plumberId] = event.target.value.split("--")
-
-
             /*
                 This object should have 3 properties
                    1. requestId
@@ -67,22 +65,13 @@ mainContainer.addEventListener(
                 date_created: new Date().toLocaleDateString()
             }
             
-
             /*
                 Invoke the function that performs the POST request
                 to the `completions` resource for your API. Send the
                 completion object as a parameter.
              */
             saveCompletion(completedService)
-            // deleteRequest(parseInt(completedService.requestId)) Can't completely delete because the completions api references the requests api for that info...
-
-            const requests = getRequests()
-            for (const request of requests) {
-                if (parseInt(requestId) === request.id) {
-                    request.completed = true
-                }
-                
-            }
+            
         }
     }
 )
