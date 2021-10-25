@@ -18,3 +18,26 @@
 	font-size: 14px;
 	line-height: 1.5;
 }
+
+.service-item {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px;
+}
+.service-item:nth-child(even) {background: #CCC}
+.service-item:nth-child(odd) {background: #FFF}
+
+.service-info {
+    flex: 9;
+
+}
+
+.request__delete {
+    flex: 1;
+    margin: 5px;
+}
+
+.plumbers {
+    flex: 1;
+    margin: 5px;
+}

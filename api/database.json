@@ -1,34 +1,66 @@
 {
-  "plumbers": [],
+  "plumbers": [
+    {
+      "id": 1,
+      "name": "Maude"
+    },
+    {
+      "id": 2,
+      "name": "Merle"
+    }
+  ],
   "completions": [
     {
-      "requestId": "2",
-      "plumberId": "1",
-      "date_created": "10/22/2021",
+      "requestId": 3,
+      "plumberId": 1,
+      "date_created": "10/25/2021",
       "id": 1
+    },
+    {
+      "requestId": 4,
+      "plumberId": 2,
+      "date_created": "10/25/2021",
+      "id": 2
+    },
+    {
+      "requestId": 4,
+      "plumberId": 1,
+      "date_created": "10/25/2021",
+      "id": 3
     }
   ],
   "requests": [
     {
-      "description": "constant dripping from faucet",
-      "address": "the big blue house",
-      "budget": "500",
-      "neededBy": "2021-10-31",
+      "description": "leaky faucet",
+      "address": "my house",
+      "budget": "10",
+      "neededBy": "2021-10-28",
+      "completed": false,
       "id": 1
     },
     {
-      "description": "test",
-      "address": "test",
-      "budget": "50",
-      "neededBy": "2021-11-03",
+      "description": "dripping shower head",
+      "address": "somewhere else",
+      "budget": "20",
+      "neededBy": "2021-10-31",
+      "completed": false,
       "id": 2
+    },
+    {
+      "description": "blah",
+      "address": "blah",
+      "budget": "1",
+      "neededBy": "2021-10-03",
+      "completed": false,
+      "id": 3
     },
     {
       "description": "test",
       "address": "test",
-      "budget": "50",
-      "neededBy": "2021-10-13",
-      "id": 3
+      "budget": "3",
+      "neededBy": "2021-10-29",
+      "completed": false,
+      "id": 4
     }
   ]
 }
