@@ -11,22 +11,10 @@
   ],
   "completions": [
     {
-      "requestId": 4,
-      "plumberId": 1,
-      "date_created": "10/25/2021",
-      "id": 1
-    },
-    {
       "requestId": 2,
       "plumberId": 2,
-      "date_created": "10/25/2021",
-      "id": 2
-    },
-    {
-      "requestId": 1,
-      "plumberId": 1,
-      "date_created": "10/25/2021",
-      "id": 3
+      "date_created": "10/26/2021",
+      "id": 1
     }
   ],
   "requests": [
@@ -39,28 +27,20 @@
       "id": 1
     },
     {
-      "description": "dripping shower head",
-      "address": "somewhere else",
-      "budget": "20",
-      "neededBy": "2021-10-31",
-      "completed": false,
+      "description": "to be completed",
+      "address": "test",
+      "budget": "4",
+      "neededBy": "2021-10-28",
+      "completed": true,
       "id": 2
     },
     {
-      "description": "blah",
-      "address": "blah",
-      "budget": "1",
-      "neededBy": "2021-10-03",
+      "description": "to be left uncompleted",
+      "address": "ets",
+      "budget": "",
+      "neededBy": "2021-11-02",
       "completed": false,
       "id": 3
-    },
-    {
-      "description": "test",
-      "address": "test",
-      "budget": "3",
-      "neededBy": "2021-10-29",
-      "completed": false,
-      "id": 4
     }
   ]
 }

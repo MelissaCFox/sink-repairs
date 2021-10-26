@@ -15,10 +15,5 @@ export const SinkRepair = () => {
             ${Requests()}
         </section>
 
-        <section class="serviceCompletions">
-        <h2>Completed Requests</h2>
-        ${Completions()}
-        </section>
-
     `
 }

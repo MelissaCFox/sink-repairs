@@ -1,30 +1,72 @@
-import { getRequests, getPlumbers, deleteRequest, saveCompletion } from "./dataAccess.js"
+import { getRequests, getPlumbers, deleteRequest, saveCompletion, updateRequest, getCompletions } from "./dataAccess.js"
 
 
 const requestItemListBuilder = (request) => {
     const plumbers = getPlumbers()
-
-    return `<li class="service-item">
-        <section class="service-info">
-        Request #${request.id}: ${request.description}
-        </section>
- 
-        <select class="plumbers" id="plumbers">
-        <option value="">Choose</option>
-        ${
-            plumbers.map(
-                plumber => {
-                    return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+    let html = ``
+    if (request.completed === false) {
+        html += `
+            <li class="service-item incomplete">
+                <section class="service-info">
+                    Request #${request.id}: ${request.description}
+                </section>
+                <select class="plumbers" id="plumbers">
+                    <option value="">Choose</option>
+                    ${
+                        plumbers.map(
+                            plumber => {
+                                return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+                            }
+                        ).join("")
+                    }
+                </select>`
+    } else {
+        const completions = getCompletions()
+            const foundCompletion = completions.find(
+                (completion) => {
+                    return completion.requestId === request.id
                 }
-            ).join("")
-        }
-        </select>
+            )
+            const completionPlumberId = foundCompletion.plumberId
+            const foundPlumber = plumbers.find(
+                (plumber) => {
+                    return plumber.id === completionPlumberId
+                }
+            )
+        html += `<li class="service-item completed">
+                    <section class="service-info">
+                        Request #${request.id} has been completed by ${foundPlumber.name}.
+                    </section>`
+    }
 
-            <button class="request__delete" id="request--${request.id}">
+    html += `<button class="request__delete" id="request--${request.id}">
                 Delete
             </button>
+            </li>`
 
-        </li>`
+    return html
+
+    // return `<li class="service-item">
+    //     <section class="service-info">
+    //     Request #${request.id}: ${request.description}
+    //     </section>
+ 
+    //     <select class="plumbers" id="plumbers">
+    //     <option value="">Choose</option>
+    //     ${
+    //         plumbers.map(
+    //             plumber => {
+    //                 return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+    //             }
+    //         ).join("")
+    //     }
+    //     </select>
+
+    //         <button class="request__delete" id="request--${request.id}">
+    //             Delete
+    //         </button>
+
+    //     </li>`
 }
 
 
@@ -71,7 +113,16 @@ mainContainer.addEventListener(
                 completion object as a parameter.
              */
             saveCompletion(completedService)
-            
+            //find request index that this event target 
+            const requests = getRequests()
+            const foundRequest = requests.find(
+                (request) => {
+                    return request.id === parseInt(requestId)
+                }
+            )
+            updateRequest(foundRequest.id)
+
+           
         }
     }
 )

@@ -95,7 +95,7 @@ export const saveCompletion = (completedService) => {
         },    
         body: JSON.stringify(completedService)
     }    
-    return fetch(`${API}/completions`, fetchOptions)
+    fetch(`${API}/completions`, fetchOptions)
     .then(completion => completion.json())
     .then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
@@ -112,19 +112,20 @@ export const deleteCompletion = (id) => {
 }
 
 
-export const updateRequest = () => {
-    const fetchOptions = {
-        method: 'PUT',
+export const updateRequest = (id) => {
+    return fetch(`${API}/requests/${id}`, {
+        method: 'PATCH',
         headers:{
         'Content-Type':'application/json'
         },
-        body: JSON.stringify(updatedRequest)
-    }
-    return fetch(`${API}/requests`, fetchOptions)
-    .then(request => request.json())
-    .then(() => {
-        mainContainer.container.dispatchEvent(new CustomEvent("stateChanged"))
+        body: JSON.stringify({
+            completed: true
+        }),
     })
-
+    .then(
+        () => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+    )
 
 }
