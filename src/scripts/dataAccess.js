@@ -48,6 +48,36 @@ export const getCompletions = () => {
     return applicationState.completions.map(completion => ({...completion}))
 }
 
+export const getSortedRequests = () => {
+    return applicationState.requests.sort (
+        (a,b) => {
+            const completions = getCompletions()
+            const foundACompletion = completions.find(
+                (completion) => {
+                    return (completion.requestId === a.id)
+                }
+            )
+            let valueA = false
+            if (foundACompletion) {
+                valueA = true
+            }
+            
+            const foundBCompletion = completions.find(
+                (completion) => {
+                    return (completion.requestId === b.id)
+                }
+            )
+            let valueB = false
+            if (foundBCompletion) {
+                valueB = true
+            }
+
+            return valueA - valueB
+
+        }
+    )
+}
+
 
 
 const mainContainer = document.querySelector("#container")
@@ -102,21 +132,3 @@ export const deleteCompletion = (id) => {
         )
 }
 
-
-export const updateRequest = (id) => {
-    return fetch(`${API}/requests/${id}`, {
-        method: 'PATCH',
-        headers:{
-        'Content-Type':'application/json'
-        },
-        body: JSON.stringify({
-            completed: true,
-        }),
-    })
-    .then(
-        () => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-        }
-    )
-
-}

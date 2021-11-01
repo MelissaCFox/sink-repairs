@@ -1,10 +1,30 @@
-import { getRequests, getPlumbers, deleteRequest, saveCompletion, updateRequest, getCompletions } from "./dataAccess.js"
+import { getRequests, getPlumbers, deleteRequest, saveCompletion, getCompletions, getSortedRequests } from "./dataAccess.js"
 
 
 const requestItemListBuilder = (request) => {
     const plumbers = getPlumbers()
-    let html = ``
-    if (request.completed === false) {
+    
+    const completions = getCompletions()
+    const foundCompletion = completions.find(
+        (completion) => {
+            return completion.requestId === request.id
+        }
+    )
+
+    let html = ""
+    if (foundCompletion) {
+        const foundCompletionPlumberId = foundCompletion.plumberId
+        const foundPlumber = plumbers.find(
+            (plumber) => {
+                return plumber.id === foundCompletionPlumberId
+            }
+        )
+
+        html += `<li class="service-item completed">
+                    <section class="service-info">
+                    Request #${request.id} was completed by ${foundPlumber.name}.
+                    </section>`
+    } else {
         html += `
             <li class="service-item incomplete">
                 <section class="service-info">
@@ -19,23 +39,6 @@ const requestItemListBuilder = (request) => {
         ).join("")
             }
                 </select>`
-    } else {
-        const completions = getCompletions()
-        const foundCompletion = completions.find(
-            (completion) => {
-                return completion.requestId === request.id
-            }
-        )
-        const completionPlumberId = foundCompletion.plumberId
-        const foundPlumber = plumbers.find(
-            (plumber) => {
-                return plumber.id === completionPlumberId
-            }
-        )
-        html += `<li class="service-item completed">
-                    <section class="service-info">
-                        Request #${request.id} was completed by ${foundPlumber.name}.
-                    </section>`
     }
 
     html += `<button class="request__delete" id="request--${request.id}">
@@ -44,16 +47,20 @@ const requestItemListBuilder = (request) => {
             </li>`
 
     return html
+
 }
 
 
 export const Requests = () => {
-    const requests = getRequests()
-    const sortedRequests = requests.sort(function (a, b) { return a.completed - b.completed })
+
+    const sortedRequests = getSortedRequests()
 
     let html = "<ul>"
-    const listItems = sortedRequests.map(requestItemListBuilder)
-    html += listItems.join("")
+
+    const sortedListItems = sortedRequests.map(requestItemListBuilder)
+
+    html += sortedListItems.join("")
+
     html += "</ul>"
 
     return html
@@ -81,11 +88,9 @@ mainContainer.addEventListener(
             */
             const completedService = {
                 requestId: parseInt(requestId),
-                plumberId: parseInt(plumberId),
-                //return completion date as time in miliseconds - to use for sorting
-                date_completed: Date.now()
-                //return completion date as month/day/year string for readability
-                // date_completed: new Date().toLocaleDateString()
+                plumberId: parseInt(plumberId),        
+                //stringified date for readability
+                date_completed: new Date().toLocaleDateString()
             }
 
             /*
@@ -94,15 +99,7 @@ mainContainer.addEventListener(
                 completion object as a parameter.
              */
             saveCompletion(completedService)
-            //find request index that this event target 
-            const requests = getRequests()
-            const foundRequest = requests.find(
-                (request) => {
-                    return request.id === parseInt(requestId)
-                }
-            )
-            updateRequest(foundRequest.id)
-
+            
 
         }
     }

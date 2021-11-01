@@ -11,10 +11,16 @@
   ],
   "completions": [
     {
+      "requestId": 3,
+      "plumberId": 2,
+      "date_completed": "11/1/2021",
+      "id": 1
+    },
+    {
       "requestId": 2,
       "plumberId": 1,
-      "date_completed": 1635796020642,
-      "id": 1
+      "date_completed": "11/1/2021",
+      "id": 2
     }
   ],
   "requests": [
@@ -27,26 +33,28 @@
       "id": 1
     },
     {
-      "description": "sdegsg",
-      "address": "sdgsxdgf",
-      "budget": "10",
+      "description": "sdgvs",
+      "address": "gsdgv",
+      "budget": "9",
       "neededBy": "2021-11-17",
       "completed": true,
-      "id": 2
+      "id": 2,
+      "time_completed": 1635799805926
     },
     {
-      "description": "sdgsxdg",
-      "address": "dgsdg",
-      "budget": "11",
-      "neededBy": "2021-11-04",
-      "completed": false,
-      "id": 3
+      "description": "sfcgvs",
+      "address": "sdvgsxdgv",
+      "budget": "13",
+      "neededBy": "2021-11-17",
+      "completed": true,
+      "id": 3,
+      "time_completed": 1635799804477
     },
     {
-      "description": "xsfgbszxdg",
-      "address": "sdgszdg",
-      "budget": "10",
-      "neededBy": "2021-11-13",
+      "description": "sdg",
+      "address": "sdgb",
+      "budget": "25",
+      "neededBy": "2021-11-17",
       "completed": false,
       "id": 4
     }
