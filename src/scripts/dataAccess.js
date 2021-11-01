@@ -1,15 +1,6 @@
 const applicationState = {
     requests: [],
-    plumbers: [
-        // {
-        //     id: 1,
-        //     name: "Maude",
-        // },
-        // {
-        //     id: 2,
-        //     name: "Merle"
-        // }
-    ],
+    plumbers: [],
     completions: []
 
 }
@@ -119,7 +110,7 @@ export const updateRequest = (id) => {
         'Content-Type':'application/json'
         },
         body: JSON.stringify({
-            completed: true
+            completed: true,
         }),
     })
     .then(

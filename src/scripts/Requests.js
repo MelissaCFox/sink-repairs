@@ -45,36 +45,15 @@ const requestItemListBuilder = (request) => {
             </li>`
 
     return html
-
-    // return `<li class="service-item">
-    //     <section class="service-info">
-    //     Request #${request.id}: ${request.description}
-    //     </section>
- 
-    //     <select class="plumbers" id="plumbers">
-    //     <option value="">Choose</option>
-    //     ${
-    //         plumbers.map(
-    //             plumber => {
-    //                 return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
-    //             }
-    //         ).join("")
-    //     }
-    //     </select>
-
-    //         <button class="request__delete" id="request--${request.id}">
-    //             Delete
-    //         </button>
-
-    //     </li>`
 }
 
 
 export const Requests = () => {
     const requests = getRequests()
+    const sortedRequests = requests.sort(function(a,b){return a.completed-b.completed})
 
     let html = "<ul>"
-    const listItems = requests.map(requestItemListBuilder)
+    const listItems = sortedRequests.map(requestItemListBuilder)
     html += listItems.join("")
     html += "</ul>"
 
