@@ -1,4 +1,4 @@
-import { getRequests, getPlumbers, deleteRequest, saveCompletion, getCompletions, getSortedRequests } from "./dataAccess.js"
+import {getPlumbers, deleteRequest, saveCompletion, getCompletions, getSortedRequests } from "./dataAccess.js"
 
 
 const requestItemListBuilder = (request) => {
